@@ -3,6 +3,7 @@ package com.example.WalletProject.services;
 import com.example.WalletProject.models.Account;
 import com.example.WalletProject.repositories.AccountRepository;
 import com.example.WalletProject.repositories.TransactionRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ public class AccountWithTransactionService {
         this.transactionRepository = transactionRepository;
     }
 
+    @Transactional
     public Set<Account> allAccountByClientId(Long clientId){
         return accountRepository.findByClientId(clientId);
     }
